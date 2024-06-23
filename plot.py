@@ -14,22 +14,22 @@ def piece_count(fen):
     return sum((ch in "PNBRQKpnbrqk") for ch in board)
 
 groups = {}
+data = []
 
-for line in open(sys.argv[1]):
+for i, line in enumerate(open(sys.argv[1])):
     fen, ms = line.split("\t")
     ms = int(ms)
-    if True or piece_count(fen) == 5:
+    if i > 500 and (True or piece_count(fen) == 5):
+        data.append(ms)
         groups[group(ms)] = groups.get(group(ms), 0) + 1
 
 log_groups = {i: math.log(v) for i, v in groups.items()}
-
-maximum = max(log_groups.values())
-
+max_val = max(log_groups.values())
 for i in range(30):
     val = log_groups.get(i, 0)
-    width = round(val * 80 / maximum)
+    width = round(val * 80 / max_val)
     print(str(i * GROUP_MS).rjust(5) + "ms", "=" * width, groups.get(i, 0))
 
 print()
-q = statistics.quantiles(groups.values(), n=100)
-print(f"median: {q[49]}  p90: {q[89]}  p99: {q[98]}  max: {max(groups.values())}")
+q = statistics.quantiles(data, n=100, method="inclusive")
+print(f"median: {q[49]}  p90: {q[89]}  p99: {q[98]}  max: {max(data)}")
