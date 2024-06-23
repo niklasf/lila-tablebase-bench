@@ -23,11 +23,17 @@ fn main() -> Result<(), Box<dyn Error>> {
         .lines()
         .collect::<Result<_, io::Error>>()?;
 
+    let client = reqwest::blocking::Client::builder()
+        .timeout(None)
+        .pool_idle_timeout(None)
+        .build()
+        .expect("client");
+
     // RAYON_NUM_THREADS
 
     fens.par_iter().for_each(|fen| {
         let before = Instant::now();
-        let _ = reqwest::blocking::Client::new()
+        let _ = client
             .get(&opt.endpoint)
             .query(&[("fen", fen)])
             .send()
