@@ -38,8 +38,6 @@ fn main() -> Result<(), Box<dyn Error>> {
             .query(&[("fen", fen)])
             .send()
             .expect("send")
-            .error_for_status()
-            .expect("ok")
             .text()
             .expect("text");
         println!("{}\t{}", fen, before.elapsed().as_millis());
