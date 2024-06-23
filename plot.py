@@ -32,4 +32,4 @@ for i in range(30):
 
 print()
 q = statistics.quantiles(data, n=100, method="inclusive")
-print(f"median: {q[49]}  p90: {q[89]}  p99: {q[98]}  max: {max(data)}")
+print(f"samples: {len(data)}  median: {q[49]}  p90: {q[89]}  p99: {q[98]}  max: {max(data)}")
