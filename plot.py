@@ -19,7 +19,7 @@ data = []
 for i, line in enumerate(open(sys.argv[1])):
     fen, ms = line.split("\t")
     ms = int(ms)
-    if i > 900_000 and (True or piece_count(fen) == 5):
+    if i > 800_000 and (True or piece_count(fen) == 5):
         data.append(ms)
         groups[group(ms)] = groups.get(group(ms), 0) + 1
 
@@ -31,5 +31,5 @@ for i in range(30):
     print(str(i * GROUP_MS).rjust(5) + "ms", "=" * width, groups.get(i, 0))
 
 print()
-q = statistics.quantiles(data, n=100, method="inclusive")
-print(f"samples: {len(data)}  median: {q[49]}  p90: {q[89]}  p99: {q[98]}  max: {max(data)}")
+p = statistics.quantiles(data, n=1000, method="inclusive")
+print(f"samples: {len(data)}  median: {p[500-1]}  p90: {p[900-1]}  p99: {p[990-1]}  p99.9: {p[999-1]}  max: {max(data)}")
