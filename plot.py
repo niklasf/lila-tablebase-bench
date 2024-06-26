@@ -32,4 +32,5 @@ for i in range(30):
 
 print()
 p = statistics.quantiles(data, n=1000, method="inclusive")
-print(f"samples: {len(data)}  median: {p[500-1]}  p90: {p[900-1]}  p99: {p[990-1]}  p99.9: {p[999-1]}  max: {max(data)}")
+avg = statistics.fmean(data)
+print(f"samples: {len(data)}  avg: {avg:.1f}  median: {p[500-1]:.1f}  p90: {p[900-1]:.1f}  p99: {p[990-1]:.1f}  p99.9: {p[999-1]:.1f}  max: {max(data):.1f}")
