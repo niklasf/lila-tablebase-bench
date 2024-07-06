@@ -8,7 +8,7 @@ Also see https://lichess.org/@/revoof/blog/optimizing-the-tablebase-server/MetV0
 ## Run benchmarks
 
 ```bash
-unstd fens.txt.zst
+unzstd fens.txt.zst
 RAYON_NUM_THREADS=12 cargo run --release -- fens.txt | tee results.tsv
 ```
 
