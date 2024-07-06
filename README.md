@@ -24,7 +24,7 @@ RAYON_NUM_THREADS=12 cargo run --release -- fens.txt | tee results.tsv
 8/8/2Pr3k/p3P3/8/8/2K1B3/8 w - - 0 1
 ```
 
-## results
+## `results`
 
 FEN, tab, response time in milliseconds. Sample:
 
@@ -34,6 +34,10 @@ FEN, tab, response time in milliseconds. Sample:
 8/2K5/3P4/2k2b2/8/8/6B1/8 w - - 20 11	1
 8/8/4k3/4Pn1p/8/1K6/8/q7 w - - 0 42	0
 ```
+
+* `pread`/`mmap`/`parallel-pread`: I/O method as described in blog
+* `normal`/`random`: `PPOSIX_FADV_NORMAL`/`POSIX_FADV_RANDOM` or equivalent
+* `no-prefix`/`hot-prefix`/`hot-prefix2`: Unused SSD, RAID 1 with many table prefixes, RAID 0 with all table prefixes
 
 ## License
 
