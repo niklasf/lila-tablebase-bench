@@ -19,7 +19,7 @@ data = []
 for i, line in enumerate(open(sys.argv[1])):
     fen, ms = line.split("\t")
     ms = int(ms)
-    if i > 800_000 and (True or piece_count(fen) == 5):
+    if i >= 800_000 and (True or piece_count(fen) == 5):
         data.append(ms)
         groups[group(ms)] = groups.get(group(ms), 0) + 1
 
