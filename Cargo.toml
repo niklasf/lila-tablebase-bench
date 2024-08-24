@@ -1,5 +1,5 @@
 [package]
-name = "lila-tablebase-bench-tool"
+name = "lila-tablebase-bench"
 version = "0.1.0"
 edition = "2021"
 publish = false
